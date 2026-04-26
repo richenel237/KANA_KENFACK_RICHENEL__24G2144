@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 
 app = Flask(__name__)
 
-# ================= DB =================
+
 def get_db():
     url = "mysql://root:yuKoRIWQhjmRkOpQJYOxYJpCWLGpkYPj@shortline.proxy.rlwy.net:54848/railway"
     result = urlparse(url)
@@ -17,7 +17,6 @@ def get_db():
         database=result.path.lstrip("/")
     )
 
-# ================= STYLE =================
 STYLE = """
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -125,7 +124,7 @@ a {
 </style>
 """
 
-# ================= PAGE 1 =================
+
 @app.route("/")
 def home():
     return STYLE + """
@@ -254,7 +253,7 @@ def submit():
     cursor = db.cursor()
 
     sql = """INSERT INTO students
-    (matricule, nom, filiere, note, niveau, medical, redouble)
+    (matricule, nom, filiere, note, niveau, medical, type de sport)
     VALUES (%s,%s,%s,%s,%s,%s,%s)"""
 
     values = (
